@@ -3,6 +3,20 @@
   become: yes
 
   tasks:
+    - name: Check Python
+      command: python3 --version
+      register: python_check
+      ignore_errors: yes
+      change_when: false
+  
+    - name: Install Python
+      apt:
+        name: python3
+        state: present
+        update_cache: yes
+      when:
+        - python_check is failed
+  
     - name: Create group
       group:
         name: node_exporter

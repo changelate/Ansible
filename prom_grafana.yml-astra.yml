@@ -14,7 +14,7 @@
       system: yes
     loop:
       - grafana-server
-      -prometheus-server
+      - prometheus-server
     
     
     - name: Create users
@@ -84,4 +84,5 @@
         state: started
       loop:
         - grafana-server
+
         - prometheus-server
